@@ -5,7 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   TextInput,
-  useWindowDimensions,
+  Dimensions,
   View,
 } from 'react-native'
 import { useFormContext } from 'react-hook-form'
@@ -41,7 +41,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
     horizontalStart && Platform.OS === 'ios',
   )
 
-  const { width: windowWidth } = useWindowDimensions()
+  const windowWidth = Dimensions.get('window').width
   // input has 36*2 padding
   const inputWidth = windowWidth - 72
 
@@ -82,7 +82,7 @@ const CreditCardForm: React.FC<LibraryProps> = (props) => {
     }
 
     if (focusedField === CardFields.CardNumber && !requiresName) {
-      expirationRef.current.focus()
+      expirationRef.current?.focus()
       return
     }
 

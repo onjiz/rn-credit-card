@@ -3,8 +3,8 @@ import {
   Animated,
   LayoutRectangle,
   StyleSheet,
-  useWindowDimensions,
   View,
+  Dimensions,
 } from 'react-native'
 import CardIcon from '../CardIcon'
 import PlaceholderText from './PlaceholderText'
@@ -26,7 +26,7 @@ const FrontSide: React.FC<Props> = ({ model, cardType, focusedField }) => {
     expirationLayout,
     setExpirationLayout,
   ] = useState<LayoutRectangle | null>(null)
-  const { width: windowWidth } = useWindowDimensions()
+  const windowWidth = Dimensions.get('window').width
 
   const positionAnim = useRef(new Animated.ValueXY()).current
   const sizeAnim = useRef(new Animated.ValueXY()).current
